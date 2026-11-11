@@ -59,6 +59,14 @@
             transform: translateY(1px) scale(0.98);
         }
 
+        /* Responsive SVG container helper */
+        .svg-responsive-container {
+            width: 100%;
+            max-width: 260px;
+            aspect-ratio: 1 / 1;
+            margin: 0 auto;
+        }
+
         /* Custom Drag & Drop highlight */
         .dragging {
             opacity: 0.5;
@@ -87,29 +95,29 @@
 
     <!-- HEADER / NAVIGATION BAR -->
     <header class="bg-white border-b-4 border-sky-300 shadow-md sticky top-0 z-40">
-        <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+        <div class="max-w-6xl mx-auto px-3 sm:px-4 py-2.5 sm:py-3 flex items-center justify-between gap-2">
             <!-- Logo & Title -->
-            <div onclick="navTo('home')" class="flex items-center gap-3 cursor-pointer group">
-                <div class="w-12 h-12 rounded-2xl bg-amber-400 border-2 border-amber-500 flex items-center justify-center shadow-md group-hover:rotate-6 transition-transform">
-                    <svg class="w-8 h-8 text-white" viewBox="0 0 100 100">
+            <div onclick="navTo('home')" class="flex items-center gap-2 sm:gap-3 cursor-pointer group min-w-0">
+                <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-amber-400 border-2 border-amber-500 flex items-center justify-center shadow-md group-hover:rotate-6 transition-transform flex-shrink-0">
+                    <svg class="w-6 h-6 sm:w-8 sm:h-8 text-white" viewBox="0 0 100 100">
                         <circle cx="50" cy="50" r="45" fill="#38BDF8" stroke="#0284C7" stroke-width="6"/>
                         <path d="M50 50 L50 5 A45 45 0 0 1 95 50 Z" fill="#FF9F1C"/>
                         <path d="M50 50 L95 50 A45 45 0 0 1 50 95 Z" fill="#4ADE80"/>
                     </svg>
                 </div>
-                <div>
-                    <h1 class="text-xl sm:text-2xl font-bold text-sky-600 leading-tight">PETUALANGAN LINGKARAN PECAHAN</h1>
-                    <p class="text-xs sm:text-sm text-slate-500 font-semibold">SD Kelas 5 • Membandingkan & Mengurutkan Pecahan</p>
+                <div class="truncate">
+                    <h1 class="text-base sm:text-xl md:text-2xl font-bold text-sky-600 leading-tight truncate">PETUALANGAN LINGKARAN PECAHAN</h1>
+                    <p class="text-[10px] sm:text-xs md:text-sm text-slate-500 font-semibold truncate">SD Kelas 5 • Membandingkan & Mengurutkan Pecahan</p>
                 </div>
             </div>
 
             <!-- Home Button & Progress Info -->
-            <div class="flex items-center gap-3">
+            <div class="flex items-center gap-2 sm:gap-3 flex-shrink-0">
                 <div class="hidden md:flex items-center gap-2 bg-amber-50 px-3 py-1.5 rounded-full border border-amber-200">
                     <i class="fa-solid fa-star text-amber-500 text-lg animate-bounce"></i>
                     <span class="text-sm font-bold text-amber-800">Skor Kuis: <span id="nav-star-score">0</span>/100</span>
                 </div>
-                <button onclick="navTo('home')" class="bg-sky-500 hover:bg-sky-600 text-white p-2.5 sm:px-4 sm:py-2 rounded-xl font-bold flex items-center gap-2 shadow-md btn-bounce">
+                <button onclick="navTo('home')" class="bg-sky-500 hover:bg-sky-600 text-white p-2 sm:px-4 sm:py-2 rounded-xl font-bold flex items-center gap-2 shadow-md btn-bounce text-sm sm:text-base">
                     <i class="fa-solid fa-house"></i>
                     <span class="hidden sm:inline">Beranda</span>
                 </button>
@@ -118,7 +126,7 @@
     </header>
 
     <!-- MAIN CONTAINER -->
-    <main class="max-w-6xl mx-auto px-4 py-6 flex-grow w-full">
+    <main class="max-w-6xl mx-auto px-3 sm:px-4 py-4 sm:py-6 flex-grow w-full">
 
         <!-- 1. HALAMAN BERANDA -->
         <section id="page-home" class="space-y-8 animate-fade-in">
@@ -253,49 +261,50 @@
 
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
                 <!-- Controls & Info -->
-                <div class="bg-white rounded-3xl p-6 shadow-md border-2 border-amber-200 flex flex-col justify-between space-y-6">
+                <div class="bg-white rounded-3xl p-4 sm:p-6 shadow-md border-2 border-amber-200 flex flex-col justify-between space-y-4 sm:space-y-6">
                     <div>
-                        <h3 class="font-bold text-slate-700 text-lg mb-3">Pilih Jumlah Pembagian (Penyebut):</h3>
-                        <div class="grid grid-cols-4 gap-2 mb-6">
-                            <button onclick="m1SetDenominator(2)" class="m1-den-btn bg-slate-100 hover:bg-amber-100 font-bold py-2.5 rounded-xl border border-slate-300" data-den="2">2</button>
-                            <button onclick="m1SetDenominator(3)" class="m1-den-btn bg-slate-100 hover:bg-amber-100 font-bold py-2.5 rounded-xl border border-slate-300" data-den="3">3</button>
-                            <button onclick="m1SetDenominator(4)" class="m1-den-btn bg-amber-400 text-amber-950 font-bold py-2.5 rounded-xl border-2 border-amber-500 shadow-sm" data-den="4">4</button>
-                            <button onclick="m1SetDenominator(5)" class="m1-den-btn bg-slate-100 hover:bg-amber-100 font-bold py-2.5 rounded-xl border border-slate-300" data-den="5">5</button>
-                            <button onclick="m1SetDenominator(6)" class="m1-den-btn bg-slate-100 hover:bg-amber-100 font-bold py-2.5 rounded-xl border border-slate-300" data-den="6">6</button>
-                            <button onclick="m1SetDenominator(8)" class="m1-den-btn bg-slate-100 hover:bg-amber-100 font-bold py-2.5 rounded-xl border border-slate-300" data-den="8">8</button>
-                            <button onclick="m1SetDenominator(10)" class="m1-den-btn bg-slate-100 hover:bg-amber-100 font-bold py-2.5 rounded-xl border border-slate-300" data-den="10">10</button>
-                            <button onclick="m1SetDenominator(12)" class="m1-den-btn bg-slate-100 hover:bg-amber-100 font-bold py-2.5 rounded-xl border border-slate-300" data-den="12">12</button>
+                        <h3 class="font-bold text-slate-700 text-sm sm:text-lg mb-3">Pilih Jumlah Pembagian (Penyebut):</h3>
+                        <div class="grid grid-cols-4 gap-1.5 sm:gap-2 mb-4 sm:mb-6">
+                            <button onclick="m1SetDenominator(2)" class="m1-den-btn bg-slate-100 hover:bg-amber-100 font-bold py-2 rounded-xl border border-slate-300 text-sm sm:text-base" data-den="2">2</button>
+                            <button onclick="m1SetDenominator(3)" class="m1-den-btn bg-slate-100 hover:bg-amber-100 font-bold py-2 rounded-xl border border-slate-300 text-sm sm:text-base" data-den="3">3</button>
+                            <button onclick="m1SetDenominator(4)" class="m1-den-btn bg-amber-400 text-amber-950 font-bold py-2 rounded-xl border-2 border-amber-500 shadow-sm text-sm sm:text-base" data-den="4">4</button>
+                            <button onclick="m1SetDenominator(5)" class="m1-den-btn bg-slate-100 hover:bg-amber-100 font-bold py-2 rounded-xl border border-slate-300 text-sm sm:text-base" data-den="5">5</button>
+                            <button onclick="m1SetDenominator(6)" class="m1-den-btn bg-slate-100 hover:bg-amber-100 font-bold py-2 rounded-xl border border-slate-300 text-sm sm:text-base" data-den="6">6</button>
+                            <button onclick="m1SetDenominator(8)" class="m1-den-btn bg-slate-100 hover:bg-amber-100 font-bold py-2 rounded-xl border border-slate-300 text-sm sm:text-base" data-den="8">8</button>
+                            <button onclick="m1SetDenominator(10)" class="m1-den-btn bg-slate-100 hover:bg-amber-100 font-bold py-2 rounded-xl border border-slate-300 text-sm sm:text-base" data-den="10">10</button>
+                            <button onclick="m1SetDenominator(12)" class="m1-den-btn bg-slate-100 hover:bg-amber-100 font-bold py-2 rounded-xl border border-slate-300 text-sm sm:text-base" data-den="12">12</button>
                         </div>
 
                         <!-- Result Display Box -->
-                        <div class="bg-amber-50 border-2 border-amber-300 rounded-2xl p-4 text-center space-y-3">
-                        <span class="text-xs font-extrabold text-amber-700 uppercase tracking-widest">Informasi Pecahan</span>
+                        <div class="bg-amber-50 border-2 border-amber-300 rounded-2xl p-3 sm:p-4 text-center space-y-2 sm:space-y-3">
+                        <span class="text-[10px] sm:text-xs font-extrabold text-amber-700 uppercase tracking-widest">Informasi Pecahan</span>
                         
                         <!-- Fractional SVG / HTML notation -->
-                        <div class="flex items-center justify-center gap-4 py-2">
-                            <div class="inline-flex flex-col items-center justify-center font-extrabold text-4xl text-amber-600 bg-white px-5 py-2 rounded-xl shadow-inner border border-amber-200">
+                        <div class="flex items-center justify-center gap-4 py-1 sm:py-2">
+                            <div class="inline-flex flex-col items-center justify-center font-extrabold text-3xl sm:text-4xl text-amber-600 bg-white px-4 sm:px-5 py-1.5 sm:py-2 rounded-xl shadow-inner border border-amber-200">
                                 <span id="m1-num-display">3</span>
-                                <span class="w-full h-1 bg-amber-600 my-1 rounded-full"></span>
+                                <span class="w-full h-1 bg-amber-600 my-0.5 sm:my-1 rounded-full"></span>
                                 <span id="m1-den-display">4</span>
                             </div>
                         </div>
                         
-                        <p id="m1-text-words" class="text-lg font-bold text-amber-900">Tiga per empat</p>
+                        <p id="m1-text-words" class="text-base sm:text-lg font-bold text-amber-900">Tiga per empat</p>
                         <p class="text-xs text-slate-600">
                             Bagian diwarnai: <strong id="m1-colored-count">3</strong> dari <strong id="m1-total-count">4</strong> potong.
                         </p>
                     </div>
                 </div>
+            </div>
 
                 <!-- Interactive SVG Circle Display Container for Menu 1 -->
-                <div class="bg-white rounded-3xl p-6 shadow-md border-2 border-amber-200 flex flex-col items-center justify-center space-y-4">
+                <div class="lg:col-span-2 bg-white rounded-3xl p-4 sm:p-6 shadow-md border-2 border-amber-200 flex flex-col items-center justify-center space-y-4">
                     <span class="text-xs font-extrabold text-amber-700 uppercase">Lingkaran Peraga Interaktif</span>
-                    <div id="m1-svg-container" class="w-56 h-56 sm:w-64 sm:h-64 drop-shadow-md"></div>
-                    <div class="flex gap-2 w-full pt-2">
-                        <button onclick="m1Reset()" class="flex-1 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold py-2.5 rounded-xl border border-slate-300 text-sm btn-bounce">
+                    <div id="m1-svg-container" class="svg-responsive-container max-w-[240px] sm:max-w-[280px]"></div>
+                    <div class="flex gap-2 w-full max-w-xs pt-2">
+                        <button onclick="m1Reset()" class="flex-1 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold py-2 sm:py-2.5 rounded-xl border border-slate-300 text-xs sm:text-sm btn-bounce">
                             <i class="fa-solid fa-rotate-right mr-1"></i> RESET
                         </button>
-                        <button onclick="m1Randomize()" class="flex-1 bg-amber-400 hover:bg-amber-500 text-amber-950 font-bold py-2.5 rounded-xl border border-amber-500 text-sm shadow-sm btn-bounce">
+                        <button onclick="m1Randomize()" class="flex-1 bg-amber-400 hover:bg-amber-500 text-amber-950 font-bold py-2 sm:py-2.5 rounded-xl border border-amber-500 text-xs sm:text-sm shadow-sm btn-bounce">
                             <i class="fa-solid fa-shuffle mr-1"></i> ACAK
                         </button>
                     </div>
@@ -318,75 +327,75 @@
             </div>
 
             <!-- Main Comparison Arena -->
-            <div class="bg-white rounded-3xl p-6 shadow-md border-2 border-sky-200 space-y-8">
+            <div class="bg-white rounded-3xl p-4 sm:p-6 shadow-md border-2 border-sky-200 space-y-6">
                 <div class="text-center max-w-xl mx-auto">
-                    <h3 class="text-lg font-bold text-slate-700">Manakah tanda perbandingan yang benar?</h3>
-                    <p class="text-sm text-slate-500">Pilih pecahan di bawah atau klik tanda di tengah untuk menjawab.</p>
+                    <h3 class="text-base sm:text-lg font-bold text-slate-700">Manakah tanda perbandingan yang benar?</h3>
+                    <p class="text-xs sm:text-sm text-slate-500">Pilih tanda di tengah untuk membandingkan kedua lingkaran di bawah.</p>
                 </div>
 
                 <!-- 2 Side-by-Side Circles -->
-                <div class="grid grid-cols-1 md:grid-cols-7 gap-6 items-center">
+                <div class="grid grid-cols-1 md:grid-cols-7 gap-4 sm:gap-6 items-center">
                     
                     <!-- Left Fraction Box -->
-                    <div class="md:col-span-3 bg-sky-50 rounded-2xl p-4 border border-sky-200 flex flex-col items-center space-y-4">
+                    <div class="md:col-span-3 bg-sky-50 rounded-2xl p-4 border border-sky-200 flex flex-col items-center space-y-3">
                         <span class="text-xs font-extrabold text-sky-800 uppercase">Pecahan Pertama</span>
-                        <div id="m2-svg-left" class="w-48 h-48 sm:w-56 sm:h-56 drop-shadow-md"></div>
-                        <div class="bg-white px-5 py-2 rounded-xl border border-sky-300 font-extrabold text-2xl text-sky-600 shadow-sm" id="m2-frac-left">1/2</div>
+                        <div id="m2-svg-left" class="svg-responsive-container max-w-[180px] sm:max-w-[220px]"></div>
+                        <div class="bg-white px-5 py-1.5 sm:py-2 rounded-xl border border-sky-300 font-extrabold text-xl sm:text-2xl text-sky-600 shadow-sm" id="m2-frac-left">1/2</div>
                     </div>
 
                     <!-- Comparison Buttons Center -->
-                    <div class="md:col-span-1 flex flex-row md:flex-col justify-center items-center gap-3">
-                        <button onclick="m2Answer('>')" class="w-14 h-14 bg-sky-500 hover:bg-sky-600 text-white font-extrabold text-2xl rounded-2xl shadow-md btn-bounce flex items-center justify-center border-b-4 border-sky-700">&gt;</button>
-                        <button onclick="m2Answer('<')" class="w-14 h-14 bg-sky-500 hover:bg-sky-600 text-white font-extrabold text-2xl rounded-2xl shadow-md btn-bounce flex items-center justify-center border-b-4 border-sky-700">&lt;</button>
-                        <button onclick="m2Answer('=')" class="w-14 h-14 bg-sky-500 hover:bg-sky-600 text-white font-extrabold text-2xl rounded-2xl shadow-md btn-bounce flex items-center justify-center border-b-4 border-sky-700">=</button>
+                    <div class="md:col-span-1 flex flex-row md:flex-col justify-center items-center gap-2.5 sm:gap-3 py-2">
+                        <button onclick="m2Answer('>')" class="w-12 h-12 sm:w-14 sm:h-14 bg-sky-500 hover:bg-sky-600 text-white font-extrabold text-xl sm:text-2xl rounded-2xl shadow-md btn-bounce flex items-center justify-center border-b-4 border-sky-700">&gt;</button>
+                        <button onclick="m2Answer('<')" class="w-12 h-12 sm:w-14 sm:h-14 bg-sky-500 hover:bg-sky-600 text-white font-extrabold text-xl sm:text-2xl rounded-2xl shadow-md btn-bounce flex items-center justify-center border-b-4 border-sky-700">&lt;</button>
+                        <button onclick="m2Answer('=')" class="w-12 h-12 sm:w-14 sm:h-14 bg-sky-500 hover:bg-sky-600 text-white font-extrabold text-xl sm:text-2xl rounded-2xl shadow-md btn-bounce flex items-center justify-center border-b-4 border-sky-700">=</button>
                     </div>
 
                     <!-- Right Fraction Box -->
-                    <div class="md:col-span-3 bg-sky-50 rounded-2xl p-4 border border-sky-200 flex flex-col items-center space-y-4">
+                    <div class="md:col-span-3 bg-sky-50 rounded-2xl p-4 border border-sky-200 flex flex-col items-center space-y-3">
                         <span class="text-xs font-extrabold text-sky-800 uppercase">Pecahan Kedua</span>
-                        <div id="m2-svg-right" class="w-48 h-48 sm:w-56 sm:h-56 drop-shadow-md"></div>
-                        <div class="bg-white px-5 py-2 rounded-xl border border-sky-300 font-extrabold text-2xl text-sky-600 shadow-sm" id="m2-frac-right">3/4</div>
+                        <div id="m2-svg-right" class="svg-responsive-container max-w-[180px] sm:max-w-[220px]"></div>
+                        <div class="bg-white px-5 py-1.5 sm:py-2 rounded-xl border border-sky-300 font-extrabold text-xl sm:text-2xl text-sky-600 shadow-sm" id="m2-frac-right">3/4</div>
                     </div>
 
                 </div>
 
                 <!-- Feedback area -->
-                <div id="m2-feedback" class="hidden p-4 rounded-2xl text-center font-bold animate-fade-in border-2"></div>
+                <div id="m2-feedback" class="hidden p-4 rounded-2xl text-center font-bold animate-fade-in border-2 text-sm sm:text-base"></div>
             </div>
         </section>
 
         <!-- 4. MENU 3: PECAHAN SENILAI (EKSPERIMEN INTERAKTIF) -->
         <section id="page-menu3" class="hidden space-y-6">
-            <div class="flex flex-wrap items-center justify-between gap-4 bg-white p-4 rounded-2xl shadow-sm border border-slate-200">
-                <div class="flex items-center gap-3">
-                    <button onclick="navTo('home')" class="text-slate-400 hover:text-slate-600"><i class="fa-solid fa-arrow-left text-xl"></i></button>
-                    <h2 class="text-xl font-bold text-emerald-600 flex items-center gap-2">
+            <div class="flex flex-wrap items-center justify-between gap-3 bg-white p-3 sm:p-4 rounded-2xl shadow-sm border border-slate-200">
+                <div class="flex items-center gap-2 sm:gap-3">
+                    <button onclick="navTo('home')" class="text-slate-400 hover:text-slate-600"><i class="fa-solid fa-arrow-left text-lg sm:text-xl"></i></button>
+                    <h2 class="text-base sm:text-xl font-bold text-emerald-600 flex items-center gap-2">
                         <i class="fa-solid fa-puzzle-piece"></i> MENU 3: EKSPERIMEN PECAHAN SENILAI
                     </h2>
                 </div>
                 <div class="flex items-center gap-2">
-                    <button onclick="openModal('modal-aha-moment')" class="bg-amber-400 hover:bg-amber-500 text-amber-950 px-3 py-1.5 rounded-xl font-bold text-sm btn-bounce flex items-center gap-1.5">
-                        <i class="fa-solid fa-lightbulb"></i> Momen AHA!
+                    <button onclick="openModal('modal-aha-moment')" class="bg-amber-400 hover:bg-amber-500 text-amber-950 px-2.5 sm:px-3 py-1.5 rounded-xl font-bold text-xs sm:text-sm btn-bounce flex items-center gap-1.5">
+                        <i class="fa-solid fa-lightbulb"></i> <span class="hidden sm:inline">Momen</span> AHA!
                     </button>
-                    <button onclick="openModal('modal-help-m3')" class="bg-emerald-100 text-emerald-800 px-3 py-1.5 rounded-xl font-bold text-sm hover:bg-emerald-200">
-                        <i class="fa-solid fa-circle-question"></i> Petunjuk
+                    <button onclick="openModal('modal-help-m3')" class="bg-emerald-100 text-emerald-800 px-2.5 sm:px-3 py-1.5 rounded-xl font-bold text-xs sm:text-sm hover:bg-emerald-200">
+                        <i class="fa-solid fa-circle-question"></i> <span class="hidden sm:inline">Petunjuk</span>
                     </button>
                 </div>
             </div>
 
             <!-- Equivalence Visualizer & Interactive Arena -->
-            <div class="bg-white rounded-3xl p-6 shadow-md border-2 border-emerald-200 space-y-6">
+            <div class="bg-white rounded-3xl p-4 sm:p-6 shadow-md border-2 border-emerald-200 space-y-6">
                 
                 <!-- Subheader & Challenge Selector -->
-                <div class="bg-emerald-50/70 p-4 rounded-2xl border border-emerald-200 space-y-3">
+                <div class="bg-emerald-50/70 p-3.5 sm:p-4 rounded-2xl border border-emerald-200 space-y-3">
                     <div class="flex flex-col md:flex-row md:items-center justify-between gap-3">
                         <div>
-                            <h3 class="text-lg font-bold text-emerald-900">Bisakah kamu membuat pecahan yang memiliki nilai sama?</h3>
+                            <h3 class="text-base sm:text-lg font-bold text-emerald-900">Bisakah kamu membuat pecahan yang memiliki nilai sama?</h3>
                             <p class="text-xs sm:text-sm text-emerald-700">Pilih tantangan atau ubah pecahan acuan, lalu atur potongan pada lingkaran eksperimen di bawah!</p>
                         </div>
                         <div class="flex items-center gap-2 flex-shrink-0">
                             <span class="text-xs font-bold text-emerald-800">Pilih Tantangan:</span>
-                            <select id="m3-challenge-select" onchange="m3ChangeChallenge(this.value)" class="bg-white text-emerald-900 font-extrabold text-sm px-3 py-1.5 rounded-xl border border-emerald-300 outline-none cursor-pointer">
+                            <select id="m3-challenge-select" onchange="m3ChangeChallenge(this.value)" class="bg-white text-emerald-900 font-extrabold text-xs sm:text-sm px-2.5 py-1.5 rounded-xl border border-emerald-300 outline-none cursor-pointer">
                                 <option value="1/2">Tantangan 1/2</option>
                                 <option value="1/3">Tantangan 1/3</option>
                                 <option value="2/3">Tantangan 2/3</option>
@@ -396,55 +405,55 @@
                         </div>
                     </div>
 
-                    <!-- Custom Reference Inputs (Shown only if 'custom' is selected) -->
-                    <div id="m3-custom-ref-controls" class="hidden flex items-center gap-3 pt-2 border-t border-emerald-200/60">
+                    <!-- Custom Reference Inputs -->
+                    <div id="m3-custom-ref-controls" class="hidden flex flex-wrap items-center gap-2 pt-2 border-t border-emerald-200/60">
                         <span class="text-xs font-bold text-slate-700">Atur Acuan:</span>
                         <div class="flex items-center gap-2">
                             <label class="text-xs text-slate-600 font-semibold">Pembilang:</label>
-                            <select id="m3-ref-num-sel" onchange="m3UpdateCustomRef()" class="bg-white px-2 py-1 rounded-lg border font-bold text-sm"></select>
+                            <select id="m3-ref-num-sel" onchange="m3UpdateCustomRef()" class="bg-white px-2 py-1 rounded-lg border font-bold text-xs sm:text-sm"></select>
                             <label class="text-xs text-slate-600 font-semibold">Penyebut:</label>
-                            <select id="m3-ref-den-sel" onchange="m3UpdateCustomRef()" class="bg-white px-2 py-1 rounded-lg border font-bold text-sm"></select>
+                            <select id="m3-ref-den-sel" onchange="m3UpdateCustomRef()" class="bg-white px-2 py-1 rounded-lg border font-bold text-xs sm:text-sm"></select>
                         </div>
                     </div>
                 </div>
 
                 <!-- 2 MAIN CIRCLES ARENA -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 items-stretch">
                     
                     <!-- 1. LINGKARAN ACUAN (TARGET REFERENCE) -->
-                    <div class="bg-amber-50/70 rounded-3xl p-5 border-2 border-amber-300 flex flex-col items-center justify-between space-y-4">
+                    <div class="bg-amber-50/70 rounded-3xl p-4 sm:p-5 border-2 border-amber-300 flex flex-col items-center justify-between space-y-3 sm:space-y-4">
                         <div class="flex items-center justify-between w-full">
-                            <span class="text-xs font-extrabold uppercase bg-amber-200 text-amber-900 px-3 py-1 rounded-full">1. Lingkaran Acuan (Target)</span>
-                            <span class="text-xs font-bold text-amber-700">Acuan Tetap</span>
+                            <span class="text-[10px] sm:text-xs font-extrabold uppercase bg-amber-200 text-amber-900 px-2.5 py-1 rounded-full">1. Lingkaran Acuan (Target)</span>
+                            <span class="text-[10px] sm:text-xs font-bold text-amber-700">Acuan Tetap</span>
                         </div>
                         
                         <!-- SVG Display Target -->
-                        <div id="m3-svg-ref" class="w-48 h-48 sm:w-56 sm:h-56 drop-shadow-md"></div>
+                        <div id="m3-svg-ref" class="svg-responsive-container max-w-[180px] sm:max-w-[220px]"></div>
                         
-                        <div class="bg-white px-5 py-2 rounded-2xl border-2 border-amber-300 text-center shadow-sm w-full">
-                            <span id="m3-ref-fraction-text" class="text-3xl font-extrabold text-amber-600">1/2</span>
+                        <div class="bg-white px-4 py-2 rounded-2xl border-2 border-amber-300 text-center shadow-sm w-full">
+                            <span id="m3-ref-fraction-text" class="text-2xl sm:text-3xl font-extrabold text-amber-600">1/2</span>
                             <p id="m3-ref-words-text" class="text-xs text-slate-500 font-semibold mt-0.5">Satu per dua</p>
                         </div>
                     </div>
 
                     <!-- 2. LINGKARAN EKSPERIMEN (INTERACTIVE PLAYGROUND) -->
-                    <div class="bg-sky-50/70 rounded-3xl p-5 border-2 border-sky-300 flex flex-col items-center justify-between space-y-4">
+                    <div class="bg-sky-50/70 rounded-3xl p-4 sm:p-5 border-2 border-sky-300 flex flex-col items-center justify-between space-y-3 sm:space-y-4">
                         <div class="flex items-center justify-between w-full">
-                            <span class="text-xs font-extrabold uppercase bg-sky-200 text-sky-900 px-3 py-1 rounded-full">2. Lingkaran Eksperimen</span>
-                            <span class="text-xs font-bold text-sky-700">Bisa Dibongkar Pasang</span>
+                            <span class="text-[10px] sm:text-xs font-extrabold uppercase bg-sky-200 text-sky-900 px-2.5 py-1 rounded-full">2. Lingkaran Eksperimen</span>
+                            <span class="text-[10px] sm:text-xs font-bold text-sky-700">Bongkar Pasang</span>
                         </div>
 
                         <!-- Interactive SVG Canvas -->
-                        <div id="m3-svg-exp" class="w-48 h-48 sm:w-56 sm:h-56 drop-shadow-md"></div>
+                        <div id="m3-svg-exp" class="svg-responsive-container max-w-[180px] sm:max-w-[220px]"></div>
 
                         <!-- Fraction Result Display & Instructions -->
-                        <div class="bg-white p-3 rounded-2xl border-2 border-sky-300 text-center shadow-sm w-full space-y-1">
-                            <p class="text-xs font-bold text-sky-700">
-                                <i class="fa-solid fa-hand-pointer text-orange-500 animate-pulse"></i> Klik potongan untuk memasang/melepas warna!
+                        <div class="bg-white p-2.5 sm:p-3 rounded-2xl border-2 border-sky-300 text-center shadow-sm w-full space-y-1">
+                            <p class="text-[11px] sm:text-xs font-bold text-sky-700">
+                                <i class="fa-solid fa-hand-pointer text-orange-500 animate-pulse"></i> Klik potongan untuk pasang/lepas!
                             </p>
                             <div class="flex items-center justify-center gap-2">
                                 <span class="text-xs font-semibold text-slate-500">Pecahan buatanmu:</span>
-                                <span id="m3-exp-fraction-text" class="text-2xl font-extrabold text-sky-600">0/4</span>
+                                <span id="m3-exp-fraction-text" class="text-xl sm:text-2xl font-extrabold text-sky-600">0/4</span>
                             </div>
                         </div>
 
@@ -468,22 +477,22 @@
                 </div>
 
                 <!-- ACTION BUTTONS: BUKTIKAN, RESET, TANTANGAN BERIKUTNYA -->
-                <div class="flex flex-wrap items-center justify-center gap-4 pt-4 border-t border-slate-100">
-                    <button onclick="m3ResetExp()" class="bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold px-5 py-3 rounded-2xl border border-slate-300 btn-bounce flex items-center gap-2">
+                <div class="flex flex-wrap items-center justify-center gap-2.5 sm:gap-4 pt-3 sm:pt-4 border-t border-slate-100">
+                    <button onclick="m3ResetExp()" class="bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold px-4 sm:px-5 py-2.5 sm:py-3 rounded-2xl border border-slate-300 text-xs sm:text-base btn-bounce flex items-center gap-2">
                         <i class="fa-solid fa-rotate-right"></i> RESET
                     </button>
-                    <button onclick="m3VerifyEquivalence()" class="bg-emerald-500 hover:bg-emerald-600 text-white font-extrabold text-xl px-10 py-3.5 rounded-2xl shadow-lg border-b-4 border-emerald-700 btn-bounce flex items-center gap-3">
+                    <button onclick="m3VerifyEquivalence()" class="bg-emerald-500 hover:bg-emerald-600 text-white font-extrabold text-base sm:text-xl px-6 sm:px-10 py-2.5 sm:py-3.5 rounded-2xl shadow-lg border-b-4 border-emerald-700 btn-bounce flex items-center gap-2">
                         <i class="fa-solid fa-circle-check"></i> BUKTIKAN!
                     </button>
-                    <button onclick="m3NextChallenge()" class="bg-amber-400 hover:bg-amber-500 text-amber-950 font-extrabold px-5 py-3 rounded-2xl border-b-4 border-amber-600 btn-bounce flex items-center gap-2">
-                        TANTANGAN BERIKUTNYA <i class="fa-solid fa-forward"></i>
+                    <button onclick="m3NextChallenge()" class="bg-amber-400 hover:bg-amber-500 text-amber-950 font-extrabold text-xs sm:text-base px-4 sm:px-5 py-2.5 sm:py-3 rounded-2xl border-b-4 border-amber-600 btn-bounce flex items-center gap-2">
+                        BERIKUTNYA <i class="fa-solid fa-forward"></i>
                     </button>
                 </div>
 
                 <!-- FEEDBACK AREA -->
-                <div id="m3-feedback-box" class="hidden p-5 rounded-2xl text-center space-y-2 animate-fade-in border-2">
-                    <h4 id="m3-fb-title" class="text-2xl font-extrabold"></h4>
-                    <p id="m3-fb-text" class="text-base font-semibold max-w-xl mx-auto"></p>
+                <div id="m3-feedback-box" class="hidden p-4 sm:p-5 rounded-2xl text-center space-y-2 animate-fade-in border-2">
+                    <h4 id="m3-fb-title" class="text-xl sm:text-2xl font-extrabold"></h4>
+                    <p id="m3-fb-text" class="text-sm sm:text-base font-semibold max-w-xl mx-auto"></p>
                 </div>
 
             </div>
@@ -504,23 +513,23 @@
             </div>
 
             <!-- Game Control Panel -->
-            <div class="bg-white rounded-3xl p-6 shadow-md border-2 border-purple-200 space-y-6">
+            <div class="bg-white rounded-3xl p-4 sm:p-6 shadow-md border-2 border-purple-200 space-y-6">
                 
-                <div class="flex flex-col sm:flex-row items-center justify-between gap-4 bg-purple-50 p-4 rounded-2xl border border-purple-200">
-                    <div class="flex items-center gap-2">
-                        <span class="font-bold text-purple-900">Mode Urutan:</span>
-                        <select id="m4-sort-mode" onchange="m4InitGame()" class="bg-white text-purple-900 font-extrabold px-3 py-1.5 rounded-xl border border-purple-300 outline-none cursor-pointer">
+                <div class="flex flex-col sm:flex-row items-center justify-between gap-3 bg-purple-50 p-3.5 sm:p-4 rounded-2xl border border-purple-200">
+                    <div class="flex items-center gap-2 w-full sm:w-auto justify-between sm:justify-start">
+                        <span class="font-bold text-purple-900 text-xs sm:text-sm">Mode Urutan:</span>
+                        <select id="m4-sort-mode" onchange="m4InitGame()" class="bg-white text-purple-900 font-extrabold text-xs sm:text-sm px-2.5 py-1.5 rounded-xl border border-purple-300 outline-none cursor-pointer">
                             <option value="asc">Terkecil ➔ Terbesar (&lt;)</option>
                             <option value="desc">Terbesar ➔ Terkecil (&gt;)</option>
                         </select>
                     </div>
-                    <p class="text-xs sm:text-sm text-purple-700 font-semibold">
-                        <i class="fa-solid fa-up-down-left-right mr-1"></i> Geser / Tarik kartu di bawah untuk menyusun urutan!
+                    <p class="text-xs sm:text-sm text-purple-700 font-semibold text-center sm:text-right">
+                        <i class="fa-solid fa-up-down-left-right mr-1"></i> Geser / Tarik kartu di bawah!
                     </p>
                 </div>
 
                 <!-- Cards Container (Drag and Drop Grid) -->
-                <div id="m4-cards-container" class="grid grid-cols-2 lg:grid-cols-4 gap-4 min-h-[220px]">
+                <div id="m4-cards-container" class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 min-h-[180px]">
                     <!-- Draggable Cards Injected by JS -->
                 </div>
 
@@ -1180,12 +1189,12 @@
             cardEl.draggable = true;
 
             cardEl.innerHTML = `
-                <div class="w-full flex justify-between items-center text-xs font-extrabold text-purple-400 mb-2">
+                <div class="w-full flex justify-between items-center text-xs font-extrabold text-purple-400 mb-1 sm:mb-2">
                     <span><i class="fa-solid fa-grip-vertical"></i></span>
                     <span>Posisi ${idx + 1}</span>
                 </div>
-                <div class="w-28 h-28 my-2">${generateFractionSVG(card.num, card.den, "#A855F7")}</div>
-                <div class="font-extrabold text-2xl text-purple-900 bg-purple-50 w-full text-center py-1 rounded-xl border border-purple-200">${card.num}/${card.den}</div>
+                <div class="w-20 h-20 sm:w-24 sm:h-24 my-1 sm:my-2">${generateFractionSVG(card.num, card.den, "#A855F7")}</div>
+                <div class="font-extrabold text-xl sm:text-2xl text-purple-900 bg-purple-50 w-full text-center py-1 rounded-xl border border-purple-200">${card.num}/${card.den}</div>
             `;
 
             cardEl.addEventListener('dragstart', () => { draggedIndex = idx; cardEl.classList.add('opacity-50'); });
